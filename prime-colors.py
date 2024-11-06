@@ -4,13 +4,15 @@ import numpy as np
 # from colorutils import Color
 from PIL import Image
 import matplotlib.pyplot as plt
-from colorutils import Color
+import mixbox
+import random
 global N_PRIMES
 N_PRIMES = 310248241 
 
 def main():
     global N_PRIMES
     primes_numbers, primes_colors = get_primes(N_PRIMES)
+    random.shuffle(primes_colors)
     
     # colors = np.array([0, 0, 0])
     # for i in range(1, 200):
@@ -20,10 +22,11 @@ def main():
     # color_image.save("primes.jpeg")
     
     pixel_arr = []
+    print(primes_colors)
     
     prime_index = 0
     # # loop through every number
-    for i in range(2, 7):
+    for i in range(2, N_PRIMES):
         # is i prime?
         if i in primes_numbers:
             pixel_arr.append(primes_colors[prime_index])
@@ -43,11 +46,10 @@ def main():
                         pixel = color
                 except ValueError:
                     pass
-                print(pixel)
-        
-    print(pixel_arr)
+            pixel_arr.append(pixel)
     
-                
+    np_pixel_arr = np.array(pixel_arr)   
+      
                 
             
 # get primes
@@ -86,7 +88,10 @@ def get_primes(end_prime):
 # mix colors - https://github.com/scrtwpns/mixbox/tree/master/python
 # make primes brighter, composites lighter
 def mix_colors(color1, color2):
-    Color(tuple(color1), arithmetic=ArithmeticModel.BLEND) + Color(tuple(color2))
+    centroid_color = []
+    for i in range(len(color1)):
+        centroid_color.append(int((color1[i] + color2[i]) / 2))
+    return centroid_color
 
 
 # get primes of composite number 
