@@ -3,6 +3,7 @@ import math
 import numpy as np
 # from colorutils import Color
 from PIL import Image
+import matplotlib.pyplot as plt
 global N_PRIMES
 N_PRIMES = 310248241 
 
@@ -10,21 +11,21 @@ def main():
     global N_PRIMES
     primes = get_primes(N_PRIMES)
     
-    colors = np.array([
-        [[0, 0 ,0], [1, 0, 0]],
-        [[3, 0 ,0], [1, 0, 0]],
-    ])
-    color_image = Image.fromarray(colors, mode="RGB")
+    # colors = np.array([0, 0, 0])
+    # for i in range(1, 200):
+    #     colors = np.concatenate((colors, [i, i, i]), axis=0)
+    # color_image = Image.fromarray(colors, mode="RGB")
+    
     color_image.save("primes.jpeg")
     
     # # loop through every number
-    # for i in range(1, 100 + 1):
-    #     # is i prime?
-    #     if i in primes:
-    #         mix_colors()
-    #     # is i composite?
-    #     else:
-    #         factors = get_prime_factors(i)
+    for i in range(1, 100 + 1):
+        # is i prime?
+        if i in primes:
+            mix_colors()
+        # is i composite?
+        else:
+            factors = get_prime_factors(i)
             
 # get primes
 # courtesy of https://stackoverflow.com/questions/11619942/print-series-of-prime-numbers-in-python
