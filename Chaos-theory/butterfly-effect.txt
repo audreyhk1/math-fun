@@ -1,0 +1,6 @@
+Some cool articles:
+https://medium.com/@alexroz/how-to-plot-chaos-butterfly-effect-in-python-862c0cb621a4
+https://en.wikipedia.org/wiki/Lorenz_system
+https://en.wikipedia.org/wiki/Butterfly_effect
+https://scholar.google.com/scholar?hl=en&as_sdt=0%2C44&q=lorenz+butterfly+mathematics&btnG=
+
